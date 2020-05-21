@@ -13,38 +13,34 @@ module.exports = {
       // }
     ],
     sidebar: {
-      '/javascript/': [
+      '/frontend/': [
         {
           title: 'Javascript',
-          collapsable: true,
+          collapsable: false,
           children: [
-            'variable',
-            'prototype',
-            'event-loop'
+            'javascript/variable',
+            'javascript/prototype',
+            'javascript/event-loop'
           ]
-        }
-      ],
-      '/internet/': [
+        },
         {
           title: '网络',
-          collapsable: true,
+          collapsable: false,
           children: [
             // ['prepare/', 'Introduction'],
-            'http',
-            'https',
-            'storage',
-            'tcp',
-            'cdn',
-            'dns'
+            'internet/http',
+            'internet/https',
+            'internet/storage',
+            'internet/tcp',
+            'internet/cdn',
+            'internet/dns'
           ]
-        }
-      ],
-      '/design-pattern/': [
+        },
         {
           title: 'Javascript 设计模式',
-          collapsable: true,
+          collapsable: false,
           children: [
-            'observer',
+            'design-pattern/observer'
           ]
         }
       ],

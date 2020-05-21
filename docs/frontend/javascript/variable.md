@@ -22,7 +22,7 @@
     * 支持数组遍历，类数组对象（DOM NodeList），字符串，Map、Set对象;
     * 不支持遍历普通对象;
 
-```
+``` js
 /* for...in */
 Array.prototype.test = 'test'
 var a = ['one', 'two']
