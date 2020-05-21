@@ -13,10 +13,21 @@ module.exports = {
       // }
     ],
     sidebar: {
+      '/javascript/': [
+        {
+          title: 'Javascript',
+          collapsable: true,
+          children: [
+            'variable',
+            'prototype',
+            'event-loop'
+          ]
+        }
+      ],
       '/internet/': [
         {
           title: '网络',
-          collapsable: false,
+          collapsable: true,
           children: [
             // ['prepare/', 'Introduction'],
             'http',
@@ -27,7 +38,16 @@ module.exports = {
             'dns'
           ]
         }
-      ]
+      ],
+      '/design-pattern/': [
+        {
+          title: 'Javascript 设计模式',
+          collapsable: true,
+          children: [
+            'observer',
+          ]
+        }
+      ],
     }
   }
 }
