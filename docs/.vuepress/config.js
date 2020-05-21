@@ -19,7 +19,12 @@ module.exports = {
           collapsable: false,
           children: [
             // ['prepare/', 'Introduction'],
-            'http'
+            'http',
+            'https',
+            'storage',
+            'tcp',
+            'cdn',
+            'dns'
           ]
         }
       ]
