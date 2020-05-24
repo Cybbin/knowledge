@@ -19,6 +19,7 @@ module.exports = {
           collapsable: false,
           children: [
             'javascript/variable',
+            'javascript/closure',
             'javascript/prototype',
             'javascript/event-loop'
           ]
