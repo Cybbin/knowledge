@@ -41,6 +41,13 @@ module.exports = {
           ]
         },
         {
+          title: '工程化',
+          collapsable: false,
+          children: [
+            'engineer/module'
+          ]
+        },
+        {
           title: 'Javascript 设计模式',
           collapsable: false,
           children: [
