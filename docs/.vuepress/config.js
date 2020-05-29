@@ -21,7 +21,9 @@ module.exports = {
             'javascript/variable',
             'javascript/closure',
             'javascript/prototype',
-            'javascript/event-loop'
+            'javascript/cross-domain',
+            'javascript/event-loop',
+            'javascript/code'
           ]
         },
         {
@@ -34,7 +36,8 @@ module.exports = {
             'internet/storage',
             'internet/tcp',
             'internet/cdn',
-            'internet/dns'
+            'internet/dns',
+            'internet/proxy'
           ]
         },
         {

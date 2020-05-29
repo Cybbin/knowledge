@@ -3,23 +3,28 @@
 > 当在函数内部定义了其他函数，就创建了闭包。闭包有权访问包含函数内部的所有变量。 --- 《JavaScript 高级程序设计》
 
 
-## Demo
+## 应用场景
+1. 封装变量
+
+用闭包定义能访问私有函数和的私有变量公有函数。
+
+### setTimeout 传参
 
 ``` js
-var closure = function () {
-  var number = 1
-  
-  return function () {
-    return number
+  var foo = function (params) {
+    return function () {
+      console.log(params)
+    }
   }
-}
-
-var a = closure()
-
-console.log(a())
+  var f1 = foo('f1')
+  setTimeout(f1, 1000)
 ```
 
-## 闭包缓存
+::: tip
+用 bind 函数也可实现此功能，详见 ???
+:::
+
+### 闭包缓存
 
 ``` js
   var memorize = function () {
@@ -42,3 +47,13 @@ console.log(a())
   console.log(a.get('num1'))
   console.log(a.get('num2'))
 ```
+
+### 防抖、节流函数
+
+详见 ???
+
+## 缺点
+
+函数中的变量保存在内存中，内存开销大，滥用闭包会造成页面性能问题。
+* 解决办法：Chrome等有垃圾回收，IE导致内存泄露，在退出函数前，将不使用的局部变量全部删除。
+
