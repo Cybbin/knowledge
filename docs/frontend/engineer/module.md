@@ -12,6 +12,8 @@ esm = ES Modules
 
 AMD = Asynchronous Module Definition
 
+## CMD
+
 ## UMD
 
 UMD = Universal Module Definition
