@@ -7,10 +7,14 @@ module.exports = {
     editLinkText: '在 GitHub 上编辑此页',
     lastUpdated: '上次更新',
     nav: [
-      // {
-      //   text: 'text',
-      //   link: '/internet/'
-      // }
+      {
+        text: 'Front End',
+        link: '/frontend/javascript/variable'
+      },
+      {
+        text: 'Vue',
+        link: '/vue/instructor'
+      }
     ],
     sidebar: {
       '/frontend/': [
@@ -53,8 +57,69 @@ module.exports = {
           children: [
             'design-pattern/observer'
           ]
+        },
+        {
+          title: '方案',
+          collapsable: false,
+          children: [
+            'program/authentication-method'
+          ]
         }
       ],
+      '/vue/': [
+        {
+          title: '开始',
+          collapsable: false,
+          children: [
+            'instructor'
+          ]
+        },
+        {
+          title: '数据驱动',
+          collapsable: false,
+          children: [
+            'data-driven/render'
+          ]
+        },
+        {
+          title: '组件化',
+          collapsable: false,
+          children: [
+            'component/lifecycle'
+          ]
+        },
+        {
+          title: '响应式原理',
+          collapsable: false,
+          children: [
+            'reactive/getters'
+          ]
+        },
+        {
+          title: '编译',
+          collapsable: false,
+          children: [
+            'compile/parse',
+            'compile/optimize',
+            'compile/codegen',
+          ]
+        },
+        {
+          title: '拓展',
+          collapsable: false,
+          children: [
+            'extend/v-model'
+          ]
+        },
+        {
+          title: 'Vue 3.0',
+          collapsable: false,
+          children: [
+            'version3/instructor'
+          ]
+        },
+      ]
+
     }
   }
 }
