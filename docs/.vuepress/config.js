@@ -13,7 +13,7 @@ module.exports = {
       },
       {
         text: 'Vue',
-        link: '/vue/instructor'
+        link: '/vue/start/instructor'
       }
     ],
     sidebar: {
@@ -71,7 +71,18 @@ module.exports = {
           title: '开始',
           collapsable: false,
           children: [
-            'instructor'
+            'start/instructor',
+            'start/mvvm'
+          ]
+        },
+        {
+          title: '响应式',
+          collapsable: false,
+          children: [
+            'reactive/defineProperty',
+            'reactive/observerArray',
+            'reactive/async-render',
+            'reactive/getters'
           ]
         },
         {
@@ -89,13 +100,6 @@ module.exports = {
           ]
         },
         {
-          title: '响应式原理',
-          collapsable: false,
-          children: [
-            'reactive/getters'
-          ]
-        },
-        {
           title: '编译',
           collapsable: false,
           children: [
@@ -108,7 +112,8 @@ module.exports = {
           title: '拓展',
           collapsable: false,
           children: [
-            'extend/v-model'
+            'extend/v-model',
+            'extend/nextTick'
           ]
         },
         {
