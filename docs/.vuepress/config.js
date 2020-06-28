@@ -27,7 +27,8 @@ module.exports = {
             'javascript/prototype',
             'javascript/cross-domain',
             'javascript/event-loop',
-            'javascript/code'
+            'javascript/code',
+            'javascript/currying'
           ]
         },
         {
