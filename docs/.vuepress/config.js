@@ -32,20 +32,6 @@ module.exports = {
           ]
         },
         {
-          title: '网络',
-          collapsable: false,
-          children: [
-            // ['prepare/', 'Introduction'],
-            'internet/http',
-            'internet/https',
-            'internet/storage',
-            'internet/tcp',
-            'internet/cdn',
-            'internet/dns',
-            'internet/proxy'
-          ]
-        },
-        {
           title: '工程化',
           collapsable: false,
           children: [
@@ -64,6 +50,27 @@ module.exports = {
           collapsable: false,
           children: [
             'program/authentication-method'
+          ]
+        }
+      ],
+      '/internet/': [
+        {
+          title: '网络',
+          collapsable: false,
+          children: [
+            'http',
+            'https',
+            'tcp',
+            'cdn',
+            'dns',
+            'proxy'
+          ]
+        },
+        {
+          title: '缓存',
+          collapsable: false,
+          children: [
+            'storage'
           ]
         }
       ],
