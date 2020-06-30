@@ -2,34 +2,37 @@
 
 ## 观察者模式
 
-观察者有两个角色：**目标**和**观察者**。
+观察者有两个角色：**观察者**和**被观察者**。
 * 观察者想要订阅事件，必须将自己添加到目标中进行管理；
-* 目标想要想发布事件，必须将自己亲自触发事件；
+* 被观察者想要发布事件，必须将自己亲自触发事件。
 
 ```javascript
+// 观察者
 class Observer {
   constructor (name) {
     this.name = name
   }
   // 更新
-   update () {
-    console.log(this.name)
+   update (subject) {
+    console.log(this.name, subject.state)
    }
 }
 
-// 目标
+// 被观察者
 class Subject {
   constructor () {
+    this.state = ''
     this.observers = []
   }
   // 添加观察者
-   add (observer) {
+  add (observer) {
     this.observers.push(observer)
   }
-  // 通知更新
+  // 通知观察者更新
    notify () {
+    this.state = '更新'
     this.observers.forEach((observer)=> {
-      observer.update()
+      observer.update(this)
     })
   }
 }
