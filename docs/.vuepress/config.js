@@ -8,12 +8,16 @@ module.exports = {
     lastUpdated: '上次更新',
     nav: [
       {
-        text: 'Front End',
+        text: '前端',
         link: '/frontend/javascript/variable'
       },
       {
         text: 'Vue',
         link: '/vue/start/instructor'
+      },
+      {
+        text: '网络',
+        link: '/internet/http'
       }
     ],
     sidebar: {
@@ -28,7 +32,8 @@ module.exports = {
             'javascript/cross-domain',
             'javascript/event-loop',
             'javascript/code',
-            'javascript/currying'
+            'javascript/currying',
+            'javascript/promise'
           ]
         },
         {
