@@ -23,5 +23,111 @@ new Promise(function executor(resolve, reject) {
 14. `finally` 如果返回的是成功的 `promise`，会采用上一次的结果，如果返回的是失败的 `promise`，会用这个失败的结果传入下一个失败的函数。
 
 ```javascript
+const PENDING = 'pending'
+const FULFILLED = 'fulfilled'
+const REJECTED = 'rejected'
 
+const resolutionPromise = (x, newPromise, resolve, reject) => {
+  if (x === newPromise) {
+    reject(new TypeError('Type error'))
+  }
+
+  if (typeof then === 'function' || (typeof then === 'object' && then !== null)) {
+    let then = x.then
+
+    try {
+      if (typeof then === 'function') {
+        then.call(x, (y) => {
+          resolutionPromise(y, newPromise, resolve, reject)
+        }, (r) => {
+          reject(r)
+        })
+      } else {
+        resolve(x)
+      }
+    } catch (err) {
+      reject(err)
+    }
+  } else {
+    resolve(x)
+  }
+}
+
+class Promise {
+  constructor (executor) {
+    this.status = PENDING
+    this.value = null
+    this.reason = null
+
+    this.fulfilledCallbacks = []
+    this.rejectedCallbacks = []
+
+    const resolve = (value) => {
+      if (this.status === PENDING) {
+        this.status = FULFILLED
+        this.value = value
+
+        this.fulfilledCallbacks.forEach(fn => fn())
+      }
+    }
+
+    const reject = (reason) => {
+      if (this.status === PENDING) {
+        this.status = REJECTED
+        this.reason = reason
+
+        this.rejectedCallbacks.forEach(fn => fn())
+      }
+    }
+
+    try {
+      executor(resolve, reject)
+    } catch (err) {
+      reject(err)
+    }
+  }
+
+  then (onFulfilled, onRejected) {
+
+    let newPromise = new Promise((resolve, reject) => {
+      switch (this.status) {
+        case FULFILLED:
+          x = onFulfilled(this.value)
+          resolutionPromise(x, newPromise, resolve, reject)
+          break
+        case REJECTED:
+          x = onRejected(this.reason)
+          resolutionPromise(x, newPromise, resolve, reject)
+          break
+        case PENDING:
+          this.fulfilledCallbacks.push(() => {
+            x = onFulfilled(this.value)
+            resolutionPromise(x, newPromise, resolve, reject)
+          })
+          this.rejectedCallbacks.push(() => {
+            x = onRejected(this.reason)
+            resolutionPromise(x, newPromise, resolve, reject)
+          })
+          break
+      }
+    })
+
+    return newPromise
+  }
+}
+
+let promise = new Promise((resolve, reject) => {
+  setTimeout(()=> {
+    resolve('start')
+  }, 1000)
+}).then((value)=> {
+  console.log('success1', value)
+  return value
+}, (err) => {
+  console.log('fail1', err)
+}).then(value => {
+  console.log('success2', value)
+}, err => {
+  console.log('fail2', err)
+})
 ```
