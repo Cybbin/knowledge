@@ -18,6 +18,10 @@ module.exports = {
       {
         text: '网络',
         link: '/internet/http'
+      },
+      {
+        text: '数据结构',
+        link: '/data-structure/linkedlist'
       }
     ],
     sidebar: {
@@ -137,7 +141,16 @@ module.exports = {
           ]
         },
       ]
-
+      ,
+      '/data-structure/': [
+        {
+          title: '链表',
+          collapsable: false,
+          children: [
+            'linkedlist'
+          ]
+        }
+      ]
     }
   }
 }
