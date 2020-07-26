@@ -140,14 +140,30 @@ module.exports = {
             'version3/instructor'
           ]
         },
-      ]
-      ,
+      ],
       '/data-structure/': [
         {
           title: '链表',
           collapsable: false,
           children: [
             'linkedlist'
+          ]
+        }
+      ],
+      '/node/': [
+        {
+          title: 'Express',
+          collapsable: false,
+          children: [
+            'middleware'
+          ]
+        },
+        {
+          title: 'Koa',
+          collapsable: false,
+          children: [
+            'onion',
+            'middleware'
           ]
         }
       ]
