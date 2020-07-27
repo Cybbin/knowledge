@@ -28,7 +28,7 @@ module.exports = {
       '/frontend/': [
         {
           title: 'Javascript',
-          collapsable: false,
+          collapsable: true,
           children: [
             'javascript/variable',
             'javascript/closure',
@@ -42,30 +42,34 @@ module.exports = {
         },
         {
           title: '工程化',
-          collapsable: false,
+          collapsable: true,
           children: [
             'engineer/module'
           ]
         },
         {
           title: 'Javascript 设计模式',
-          collapsable: false,
+          collapsable: true,
           children: [
             'design-pattern/observer'
           ]
         },
         {
-          title: '方案',
-          collapsable: false,
+          title: '鉴权方式',
+          collapsable: true,
           children: [
-            'program/authentication-method'
+            'program/authentication/authentication-method',
+            'program/authentication/basic',
+            'program/authentication/session-cookie',
+            'program/authentication/token',
+            'program/authentication/oauth',
           ]
         }
       ],
       '/internet/': [
         {
           title: '网络',
-          collapsable: false,
+          collapsable: true,
           children: [
             'http',
             'https',
@@ -77,7 +81,7 @@ module.exports = {
         },
         {
           title: '缓存',
-          collapsable: false,
+          collapsable: true,
           children: [
             'storage'
           ]
@@ -86,7 +90,7 @@ module.exports = {
       '/vue/': [
         {
           title: '开始',
-          collapsable: false,
+          collapsable: true,
           children: [
             'start/instructor',
             'start/mvvm'
@@ -94,7 +98,7 @@ module.exports = {
         },
         {
           title: '响应式',
-          collapsable: false,
+          collapsable: true,
           children: [
             'reactive/defineProperty',
             'reactive/observerArray',
@@ -104,21 +108,21 @@ module.exports = {
         },
         {
           title: '数据驱动',
-          collapsable: false,
+          collapsable: true,
           children: [
             'data-driven/render'
           ]
         },
         {
           title: '组件化',
-          collapsable: false,
+          collapsable: true,
           children: [
             'component/lifecycle'
           ]
         },
         {
           title: '编译',
-          collapsable: false,
+          collapsable: true,
           children: [
             'compile/parse',
             'compile/optimize',
@@ -127,7 +131,7 @@ module.exports = {
         },
         {
           title: '拓展',
-          collapsable: false,
+          collapsable: true,
           children: [
             'extend/v-model',
             'extend/nextTick'
@@ -135,7 +139,7 @@ module.exports = {
         },
         {
           title: 'Vue 3.0',
-          collapsable: false,
+          collapsable: true,
           children: [
             'version3/instructor'
           ]
@@ -144,7 +148,7 @@ module.exports = {
       '/data-structure/': [
         {
           title: '链表',
-          collapsable: false,
+          collapsable: true,
           children: [
             'linkedlist'
           ]
@@ -153,14 +157,14 @@ module.exports = {
       '/node/': [
         {
           title: 'Express',
-          collapsable: false,
+          collapsable: true,
           children: [
             'middleware'
           ]
         },
         {
           title: 'Koa',
-          collapsable: false,
+          collapsable: true,
           children: [
             'onion',
             'middleware'
