@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>观察者模式/发布-订阅模式 | 知识库</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    
+    <meta name="description" content="">
+    <link rel="preload" href="/knowledge/assets/css/0.styles.bef9b11d.css" as="style"><link rel="preload" href="/knowledge/assets/js/app.dfbc139f.js" as="script"><link rel="preload" href="/knowledge/assets/js/2.08c02a28.js" as="script"><link rel="preload" href="/knowledge/assets/js/7.1a448017.js" as="script"><link rel="prefetch" href="/knowledge/assets/js/10.5f2e78e2.js"><link rel="prefetch" href="/knowledge/assets/js/11.63754800.js"><link rel="prefetch" href="/knowledge/assets/js/12.b972a0bf.js"><link rel="prefetch" href="/knowledge/assets/js/13.2702d3f6.js"><link rel="prefetch" href="/knowledge/assets/js/14.bad9e520.js"><link rel="prefetch" href="/knowledge/assets/js/15.16b13ca4.js"><link rel="prefetch" href="/knowledge/assets/js/16.7b5e6a0a.js"><link rel="prefetch" href="/knowledge/assets/js/17.096c9942.js"><link rel="prefetch" href="/knowledge/assets/js/18.dab4d708.js"><link rel="prefetch" href="/knowledge/assets/js/19.5c093edf.js"><link rel="prefetch" href="/knowledge/assets/js/20.61edfc05.js"><link rel="prefetch" href="/knowledge/assets/js/21.a7f11e97.js"><link rel="prefetch" href="/knowledge/assets/js/22.2f0ae7f0.js"><link rel="prefetch" href="/knowledge/assets/js/23.84645bbf.js"><link rel="prefetch" href="/knowledge/assets/js/24.fd487c08.js"><link rel="prefetch" href="/knowledge/assets/js/25.6feed37d.js"><link rel="prefetch" href="/knowledge/assets/js/26.6b85087e.js"><link rel="prefetch" href="/knowledge/assets/js/27.f06bf07c.js"><link rel="prefetch" href="/knowledge/assets/js/28.e267854e.js"><link rel="prefetch" href="/knowledge/assets/js/29.e67df1d2.js"><link rel="prefetch" href="/knowledge/assets/js/3.41e1f9a8.js"><link rel="prefetch" href="/knowledge/assets/js/30.76ad3738.js"><link rel="prefetch" href="/knowledge/assets/js/31.283efb85.js"><link rel="prefetch" href="/knowledge/assets/js/32.db99bac6.js"><link rel="prefetch" href="/knowledge/assets/js/33.2e0c7ea9.js"><link rel="prefetch" href="/knowledge/assets/js/34.524710f9.js"><link rel="prefetch" href="/knowledge/assets/js/35.d64551c3.js"><link rel="prefetch" href="/knowledge/assets/js/36.674c8291.js"><link rel="prefetch" href="/knowledge/assets/js/37.fb236675.js"><link rel="prefetch" href="/knowledge/assets/js/38.4347c25b.js"><link rel="prefetch" href="/knowledge/assets/js/39.9d04613a.js"><link rel="prefetch" href="/knowledge/assets/js/4.df4a3632.js"><link rel="prefetch" href="/knowledge/assets/js/40.1ba85369.js"><link rel="prefetch" href="/knowledge/assets/js/41.a3daf7be.js"><link rel="prefetch" href="/knowledge/assets/js/42.abc64d38.js"><link rel="prefetch" href="/knowledge/assets/js/43.361ec9fc.js"><link rel="prefetch" href="/knowledge/assets/js/44.3371bd4c.js"><link rel="prefetch" href="/knowledge/assets/js/45.a46fa91e.js"><link rel="prefetch" href="/knowledge/assets/js/46.79d5ff6d.js"><link rel="prefetch" href="/knowledge/assets/js/47.d23e6ec0.js"><link rel="prefetch" href="/knowledge/assets/js/48.e4acb786.js"><link rel="prefetch" href="/knowledge/assets/js/49.5bd1afa8.js"><link rel="prefetch" href="/knowledge/assets/js/5.ba29017e.js"><link rel="prefetch" href="/knowledge/assets/js/50.5cc40cff.js"><link rel="prefetch" href="/knowledge/assets/js/51.35083646.js"><link rel="prefetch" href="/knowledge/assets/js/6.5912b1c9.js"><link rel="prefetch" href="/knowledge/assets/js/8.3fe8fc9a.js"><link rel="prefetch" href="/knowledge/assets/js/9.4985830a.js">
+    <link rel="stylesheet" href="/knowledge/assets/css/0.styles.bef9b11d.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/knowledge/" class="home-link router-link-active"><!----> <span class="site-name">知识库</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/knowledge/frontend/javascript/variable.html" class="nav-link">
+  前端
+</a></div><div class="nav-item"><a href="/knowledge/vue/start/instructor.html" class="nav-link">
+  Vue
+</a></div><div class="nav-item"><a href="/knowledge/node/express/middleware.html" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/knowledge/internet/http.html" class="nav-link">
+  网络
+</a></div><div class="nav-item"><a href="/knowledge/data-structure/linkedlist.html" class="nav-link">
+  数据结构
+</a></div> <a href="https://github.com/Cybbin/knowledge" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/knowledge/frontend/javascript/variable.html" class="nav-link">
+  前端
+</a></div><div class="nav-item"><a href="/knowledge/vue/start/instructor.html" class="nav-link">
+  Vue
+</a></div><div class="nav-item"><a href="/knowledge/node/express/middleware.html" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/knowledge/internet/http.html" class="nav-link">
+  网络
+</a></div><div class="nav-item"><a href="/knowledge/data-structure/linkedlist.html" class="nav-link">
+  数据结构
+</a></div> <a href="https://github.com/Cybbin/knowledge" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Javascript</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>工程化</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Javascript 设计模式</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/knowledge/frontend/design-pattern/observer.html" aria-current="page" class="active sidebar-link">观察者模式/发布-订阅模式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/knowledge/frontend/design-pattern/observer.html#观察者模式" class="sidebar-link">观察者模式</a></li><li class="sidebar-sub-header"><a href="/knowledge/frontend/design-pattern/observer.html#发布-订阅模式" class="sidebar-link">发布-订阅模式</a></li></ul></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>鉴权方式</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="观察者模式-发布-订阅模式"><a href="#观察者模式-发布-订阅模式" class="header-anchor">#</a> 观察者模式/发布-订阅模式</h1> <h2 id="观察者模式"><a href="#观察者模式" class="header-anchor">#</a> 观察者模式</h2> <p>观察者有两个角色：<strong>观察者</strong>和<strong>被观察者</strong>。</p> <ul><li>观察者想要订阅事件，必须将自己添加到目标中进行管理；</li> <li>被观察者想要发布事件，必须将自己亲自触发事件。</li></ul> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// 观察者</span>
+<span class="token keyword">class</span> <span class="token class-name">Observer</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span> <span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 更新</span>
+   <span class="token function">update</span> <span class="token punctuation">(</span><span class="token parameter">subject</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">,</span> subject<span class="token punctuation">.</span>state<span class="token punctuation">)</span>
+   <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 被观察者</span>
+<span class="token keyword">class</span> <span class="token class-name">Subject</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token string">''</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>observers <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 添加观察者</span>
+  <span class="token function">add</span> <span class="token punctuation">(</span><span class="token parameter">observer</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>observers<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>observer<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 通知观察者更新</span>
+   <span class="token function">notify</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token string">'更新'</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>observers<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">observer</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      observer<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 新建观察者</span>
+<span class="token keyword">var</span> ob1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Observer</span><span class="token punctuation">(</span><span class="token string">'ob1'</span><span class="token punctuation">)</span>
+<span class="token keyword">var</span> ob2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Observer</span><span class="token punctuation">(</span><span class="token string">'ob2'</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 新建目标</span>
+<span class="token keyword">var</span> sub <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Subject</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 将观察者添加到目标里</span>
+sub<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>ob1<span class="token punctuation">)</span>
+sub<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>ob2<span class="token punctuation">)</span>
+
+<span class="token comment">// 通知各个观察者更新</span>
+sub<span class="token punctuation">.</span><span class="token function">notify</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h2 id="发布-订阅模式"><a href="#发布-订阅模式" class="header-anchor">#</a> 发布-订阅模式</h2> <p>发布-订阅模式多了个事件中心，作为调度中心，管理着<strong>发布-订阅</strong>的工作。</p> <ul><li>订阅者在订阅事件的时候，只关注事件本身，不关心谁发布这个事件；</li> <li>发布者在发布事件的时候，只关注事件本身，不关心谁订阅了这个事件。</li></ul> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">class</span> <span class="token class-name">Event</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 事件集合</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>handler <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 订阅事件</span>
+  <span class="token function">on</span> <span class="token punctuation">(</span><span class="token parameter">eventName<span class="token punctuation">,</span> callback</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>handler<span class="token punctuation">[</span>eventName<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>handler<span class="token punctuation">[</span>eventName<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>callback<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>handler<span class="token punctuation">[</span>eventName<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span>callback<span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 发布事件</span>
+  <span class="token function">emit</span> <span class="token punctuation">(</span><span class="token parameter">eventName</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>handler<span class="token punctuation">[</span>eventName<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>handler<span class="token punctuation">[</span>eventName<span class="token punctuation">]</span><span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>handler<span class="token punctuation">[</span>eventName<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 新建事件调度中心</span>
+<span class="token keyword">let</span> event <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Event</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 订阅事件</span>
+event<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'event1'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'event 1'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+event<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'event2'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'event 2'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 发布事件</span>
+event<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">'event1'</span><span class="token punctuation">)</span>
+event<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">'event2'</span><span class="token punctuation">)</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">6/30/2020, 11:55:40 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/knowledge/frontend/engineer/commonjs.html" class="prev">
+        commonjs
+      </a></span> <span class="next"><a href="/knowledge/frontend/program/authentication/authentication-method.html">
+        鉴权方式
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/knowledge/assets/js/app.dfbc139f.js" defer></script><script src="/knowledge/assets/js/2.08c02a28.js" defer></script><script src="/knowledge/assets/js/7.1a448017.js" defer></script>
+  </body>
+</html>
