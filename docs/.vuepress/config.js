@@ -1,178 +1,152 @@
 module.exports = {
-  base: '/knowledge/',
-  dest: 'dist',
-  title: '知识库',
+  base: "/knowledge/",
+  dest: "dist",
+  title: "知识库",
   themeConfig: {
-    repo: 'https://github.com/Cybbin/knowledge',
-    editLinkText: '在 GitHub 上编辑此页',
-    lastUpdated: '上次更新',
+    repo: "https://github.com/Cybbin/knowledge",
+    editLinkText: "在 GitHub 上编辑此页",
+    lastUpdated: "上次更新",
     nav: [
       {
-        text: '前端',
-        link: '/frontend/javascript/variable'
+        text: "前端",
+        link: "/frontend/javascript/variable",
       },
       {
-        text: 'Vue',
-        link: '/vue/start/instructor'
+        text: "Vue",
+        link: "/vue/start/instructor",
       },
       {
-        text: '网络',
-        link: '/internet/http'
+        text: "Node",
+        link: "/node/express/middleware",
       },
       {
-        text: '数据结构',
-        link: '/data-structure/linkedlist'
-      }
+        text: "网络",
+        link: "/internet/http",
+      },
+      {
+        text: "数据结构",
+        link: "/data-structure/linkedlist",
+      },
     ],
     sidebar: {
-      '/frontend/': [
+      "/frontend/": [
         {
-          title: 'Javascript',
+          title: "Javascript",
           collapsable: true,
           children: [
-            'javascript/variable',
-            'javascript/closure',
-            'javascript/prototype',
-            'javascript/cross-domain',
-            'javascript/event-loop',
-            'javascript/code',
-            'javascript/currying',
-            'javascript/promise'
-          ]
+            "javascript/variable",
+            "javascript/closure",
+            "javascript/prototype",
+            "javascript/cross-domain",
+            "javascript/event-loop",
+            "javascript/code",
+            "javascript/currying",
+            "javascript/promise",
+          ],
         },
         {
-          title: '工程化',
+          title: "工程化",
           collapsable: true,
-          children: [
-            'engineer/module',
-            'engineer/commonjs'
-          ]
+          children: ["engineer/module", "engineer/commonjs"],
         },
         {
-          title: 'Javascript 设计模式',
+          title: "Javascript 设计模式",
           collapsable: true,
-          children: [
-            'design-pattern/observer'
-          ]
+          children: ["design-pattern/observer"],
         },
         {
-          title: '鉴权方式',
+          title: "鉴权方式",
           collapsable: true,
           children: [
-            'program/authentication/authentication-method',
-            'program/authentication/basic',
-            'program/authentication/session-cookie',
-            'program/authentication/token',
-            'program/authentication/oauth',
-          ]
-        }
-      ],
-      '/internet/': [
-        {
-          title: '网络',
-          collapsable: true,
-          children: [
-            'http',
-            'https',
-            'tcp',
-            'cdn',
-            'dns',
-            'proxy',
-            'websocket'
-          ]
-        },
-        {
-          title: '缓存',
-          collapsable: true,
-          children: [
-            'storage'
-          ]
-        }
-      ],
-      '/vue/': [
-        {
-          title: '开始',
-          collapsable: true,
-          children: [
-            'start/instructor',
-            'start/mvvm'
-          ]
-        },
-        {
-          title: '响应式',
-          collapsable: true,
-          children: [
-            'reactive/defineProperty',
-            'reactive/observerArray',
-            'reactive/async-render',
-            'reactive/getters'
-          ]
-        },
-        {
-          title: '数据驱动',
-          collapsable: true,
-          children: [
-            'data-driven/render'
-          ]
-        },
-        {
-          title: '组件化',
-          collapsable: true,
-          children: [
-            'component/lifecycle'
-          ]
-        },
-        {
-          title: '编译',
-          collapsable: true,
-          children: [
-            'compile/parse',
-            'compile/optimize',
-            'compile/codegen',
-          ]
-        },
-        {
-          title: '拓展',
-          collapsable: true,
-          children: [
-            'extend/v-model',
-            'extend/nextTick'
-          ]
-        },
-        {
-          title: 'Vue 3.0',
-          collapsable: true,
-          children: [
-            'version3/instructor'
-          ]
+            "program/authentication/authentication-method",
+            "program/authentication/basic",
+            "program/authentication/session-cookie",
+            "program/authentication/token",
+            "program/authentication/oauth",
+          ],
         },
       ],
-      '/data-structure/': [
+      "/internet/": [
         {
-          title: '链表',
+          title: "网络",
           collapsable: true,
           children: [
-            'linkedlist'
-          ]
-        }
-      ],
-      '/node/': [
-        {
-          title: 'Express',
-          collapsable: true,
-          children: [
-            'middleware'
-          ]
+            "http",
+            "https",
+            "tcp",
+            "cdn",
+            "dns",
+            "proxy",
+            "websocket",
+          ],
         },
         {
-          title: 'Koa',
+          title: "缓存",
+          collapsable: true,
+          children: ["storage"],
+        },
+      ],
+      "/vue/": [
+        {
+          title: "开始",
+          collapsable: true,
+          children: ["start/instructor", "start/mvvm"],
+        },
+        {
+          title: "响应式",
           collapsable: true,
           children: [
-            'onion',
-            'middleware'
-          ]
-        }
-      ]
-    }
-  }
-}
+            "reactive/defineProperty",
+            "reactive/observerArray",
+            "reactive/async-render",
+            "reactive/getters",
+          ],
+        },
+        {
+          title: "数据驱动",
+          collapsable: true,
+          children: ["data-driven/render"],
+        },
+        {
+          title: "组件化",
+          collapsable: true,
+          children: ["component/lifecycle"],
+        },
+        {
+          title: "编译",
+          collapsable: true,
+          children: ["compile/parse", "compile/optimize", "compile/codegen"],
+        },
+        {
+          title: "拓展",
+          collapsable: true,
+          children: ["extend/v-model", "extend/nextTick"],
+        },
+        {
+          title: "Vue 3.0",
+          collapsable: true,
+          children: ["version3/instructor"],
+        },
+      ],
+      "/data-structure/": [
+        {
+          title: "链表",
+          collapsable: true,
+          children: ["linkedlist"],
+        },
+      ],
+      "/node/": [
+        {
+          title: "Express",
+          collapsable: true,
+          children: ["express/middleware"],
+        },
+        {
+          title: "Koa",
+          collapsable: true,
+          children: ["koa/onion", "koa/middleware"],
+        },
+      ],
+    },
+  },
+};
