@@ -44,7 +44,8 @@ module.exports = {
           title: '工程化',
           collapsable: true,
           children: [
-            'engineer/module'
+            'engineer/module',
+            'engineer/commonjs'
           ]
         },
         {
@@ -76,7 +77,8 @@ module.exports = {
             'tcp',
             'cdn',
             'dns',
-            'proxy'
+            'proxy',
+            'websocket'
           ]
         },
         {
