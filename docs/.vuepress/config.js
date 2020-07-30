@@ -127,6 +127,12 @@ module.exports = {
           collapsable: true,
           children: ["version3/instructor"],
         },
+        {
+          title: "Vuex",
+          collapsable: true,
+          children: ["vuex/init"],
+          children: ["vuex/mutations"]
+        }
       ],
       "/data-structure/": [
         {
