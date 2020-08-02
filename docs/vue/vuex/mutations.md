@@ -43,3 +43,26 @@ export class Store {
   }
 }
 ```
+
+## 监控是否为 mutation 修改 state
+
+在 `Vuex` 中的严格模式中，只允许通过提交 `mutation` 来变更 `state`，否则会警告。
+
+* 核心逻辑是通过 `_withCommit` 函数，在每次变更 `state` 时，都用 `_withCommit` 包上，变更前将 `_committing` 设置为 `true`，变更后再设置回来。
+* 再通过 `Vue.$watch` 监听 `state` 上的变更，如果 `_committing` 不为 `true`，则认为不是在 `mutation` 上触发的变更。
+
+```js
+_withCommit (fn) {
+  const committing = this._committing
+  this._committing = true
+  fn()
+  this._committing = committing
+}
+
+// watch state
+store._vm.$watch(function () { return this._data.$$state }, () => {
+    if (__DEV__) {
+      assert(store._committing, `do not mutate vuex store state outside mutation handlers.`)
+    }
+}, { deep: true, sync: true })
+```
