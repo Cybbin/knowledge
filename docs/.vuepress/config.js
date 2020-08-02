@@ -130,8 +130,11 @@ module.exports = {
         {
           title: "Vuex",
           collapsable: true,
+          children: ["vuex/entry"],
           children: ["vuex/init"],
-          children: ["vuex/mutations"]
+          children: ["vuex/installModule"],
+          children: ["vuex/mutations"],
+          children: ["vuex/plugins"]
         }
       ],
       "/data-structure/": [

@@ -1,47 +1,5 @@
 # commit & dispatch
 
-## 发布订阅
-
-1. 在 `Store` 的构造函数中，使用了发布订阅模式，先将 `mutations` 和 `actions` 收集起来；
-2. 使用 `call` 绑定 `this`，这就是为什么在 `mutations` 和 `actions` 函数中的 `this` 指向当前 `store` ；
-3. 在 `mutations` 中的函数的第一个参数始终为 `state`，在 `actions` 的第一个参数始终为包括 `dispatch`、`commit` 等属性的对象也是在这里定义。
-
-```js
-constructor () {
-  // ...
-  this._actions = Object.create(null)
-  this._mutations = Object.create(null)
-  // ...
-  registerMutation()
-  registerAction()
-  // ...
-}
-
-// 收集 mutation
-function registerMutation (store, type, handler, local) {
-  const entry = store._mutations[type] || (store._mutations[type] = [])
-  entry.push(function wrappedMutationHandler (payload) {
-    handler.call(store, local.state, payload)
-  })
-}
-
-// 收集 action
-function registerAction (store, type, handler, local) {
-  const entry = store._actions[type] || (store._actions[type] = [])
-  entry.push(function wrappedActionHandler (payload) {
-    let res = handler.call(store, {
-      dispatch: local.dispatch,
-      commit: local.commit,
-      getters: local.getters,
-      state: local.state,
-      rootGetters: store.getters,
-      rootState: store.state
-    }, payload)
-  })
-  // ...
-}
-```
-
 ## 函数劫持
 
 在构造函数中，对 `commit` 和 `dispatch` 进行函数劫持，

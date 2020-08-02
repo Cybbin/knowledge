@@ -1,57 +1,89 @@
-# Vuex 初始化逻辑
+# 数据初始化
 
-使用时，引入一个 `vuex`，并使用 `Vue.use(Vuex)`，注入到 `Vue` 中，导出 `Vuex.Store` 的一个实例，代码如下：
+在构造函数中初始化内部数据
 
 ```js
-import Vue from 'vue'
-import Vuex from 'vuex'
+export class Store {
+  constructor() {
+    const {
+      plugins = [],
+      strict = false
+    } = options
 
-Vue.use(Vuex) // 执行 Vuex 的 install 方法
+    // store internal state
+    this._committing = false
+    this._actions = Object.create(null)
+    this._actionSubscribers = []
+    this._mutations = Object.create(null)
+    this._wrappedGetters = Object.create(null)
+    this._modules = new ModuleCollection(options) // 初始化 modules 结构树
+    this._modulesNamespaceMap = Object.create(null)
+    this._subscribers = []
+    this._watcherVM = new Vue()
+    this._makeLocalGettersCache = Object.create(null)
+  }
+}
 
-export default new Vuex.Store({ // 导出 Vuex.Store 的一个实例
-  state:{},
-  getters:{},
-  mutations: {},
-  actions: {}
-})
 ```
 
-## Vue.use
-在 `Vue` 中，使用 `Vue.use`，默认会执行当前插件的 `install` 方法，并将 `Vue` 作为参数传入 `install` 方法中。
+## ModuleCollection
 
-## install
+`ModuleCollection` 的主要作用是将用户传进来的 `modules` 构造为 `module` 对象。
 
-在 `install` 方法中，主要是执行 `applyMixin` 函数，将 `store` 属性注入到当起组件和子组件中。
-
-1. 调用 `Vue.mixin`,在 `beforeCreate` 钩子中执行 `vuexInit`，将此功能通过 `mixin` 混入到每一个 `Vue` 实例中；
-2. 利用 `Vue` 组件创建过程是先父后子，即先调用父组件的 `beforeCreate`，再调用子组件的 `beforeCreate`；
-3. 在 `vuexInit` 方法中，先判断当前组件有无 `store` 属性（这个组件为根组件），有则将根组件的 `$store` 属性赋值为传入 `options` 的 `store`；
-4. 如果当前组件无 `store` 属性，则代表当前组件为子组件，子组件的 `$store` 属性则赋值为父组件的 `$store` 属性即可。
+主要格式化的函数为 `register`，将整个 `modules` 格式化为 `Module` 类型，包含 `_rawModule`、`_children`、`state` 等属性。循环递归调用 `register`，将每个模块都格式化为 `Module` 类型。
 
 ```js
-function install (_Vue) {
-  if (Vue && _Vue === Vue) {
-    return
+export default class ModuleCollection {
+  constructor (rawRootModule) {
+    // register root module (Vuex.Store options)
+    this.register([], rawRootModule, false)
   }
-  Vue = _Vue;
-  applyMixin(Vue);
-}
 
-function applyMixin (Vue) {
-  // 省略代码
-  Vue.mixin({ beforeCreate: vuexInit });
-  // 省略代码
+  // ...
+  register (path, rawModule, runtime = true) {
+    if (__DEV__) {
+      assertRawModule(path, rawModule)
+    }
 
-  function vuexInit () {
-    var options = this.$options;
-    // store injection
-    if (options.store) { // 根实例
-      this.$store = typeof options.store === 'function'
-        ? options.store()
-        : options.store;
-    } else if (options.parent && options.parent.$store) { // 子组件
-      this.$store = options.parent.$store;
+    const newModule = new Module(rawModule, runtime) // 格式化 rawModule
+    if (path.length === 0) { // 判断是否为根节点
+      this.root = newModule // 根节点的 rawModule 赋值给 root
+    } else {
+      const parent = this.get(path.slice(0, -1)) // 获取当前节点的父节点
+      parent.addChild(path[path.length - 1], newModule) // 父节点新增一个 children 为当前节点
+    }
+
+    // register nested modules
+    if (rawModule.modules) { // 如果当前节点定义了 modules 属性，遍历所有子节点，递归格式化
+      forEachValue(rawModule.modules, (rawChildModule, key) => {
+        this.register(path.concat(key), rawChildModule, runtime)
+      })
     }
   }
+
+  get (path) { // 获取当前节点的父节点
+    return path.reduce((module, key) => {
+      return module.getChild(key)
+    }, this.root)
+  }
+  // ...
 }
+```
+
+`get` 函数的作用是获取 `path` 路径最后的元素的模块，比如下面结构
+* 当格式化执行到 `a` 和 `b` 时，`get` 函数执行得到 `root` 模块；
+* 格式化c时，`path` 因为前面 `slice(0,-1)` 截取掉了`c`，所以这里的 `path` 为`['b']`，`get` 函数执行得到 `b`的模块。
+
+
+```js
+ modules: {
+   a: {
+     modules: {}
+   }
+   b: {
+     modules: {
+       c:{}
+     }
+   }
+ }
 ```
