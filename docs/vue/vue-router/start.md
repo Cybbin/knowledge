@@ -9,5 +9,4 @@
 * 路由方式：`hash`、`history`、`abstract`
 * 自定义组件： `router-view`、`router-link`
 
-
 ## 为什么要用 Vue-Router

@@ -100,6 +100,7 @@ module.exports = {
             "reactive/observerArray",
             "reactive/async-render",
             "reactive/getters",
+            "reactive/computed"
           ],
         },
         {
