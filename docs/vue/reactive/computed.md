@@ -6,6 +6,9 @@
 1. 计算属性的结果会被缓存，除非依赖的属性发生变化，才会重新计算；
 2. 适用于依赖多个属性时。
 
+缓存的概念：
+`computed` 的值在 `getter` 执行后是会缓存的，只有在它依赖的属性值改变之后，下一次获取 `computed` 的值时才会重新调用对应的 `getter` 来计算。
+
 
 ## 原理
 
@@ -13,7 +16,7 @@
 
 初始化 `computed` 参数
 
-1. 在 initComputed 中，循环遍历 `computed` 中的属性，属性中的 `get`，因为 `computed` 有两种写法，所以这里对函数和对象做了区分。
+1. 在 `initComputed` 中，循环遍历 `computed` 中的属性，属性中的 `get`，因为 `computed` 有两种写法，所以这里对函数和对象做了区分。
 2. 将当前实例的 `computed` 的每一个属性通过 `watcher` 实例化，设置 `watcher` 的 `lazy`为 `true`，标识这是一个计算 `watcher`，并存放到 `vm._computedWatchers` 中。
 3. 调用 `defineComputed`，重写属性中的 `getter` 函数。
 
@@ -97,7 +100,8 @@ export function defineComputed (
 2. `dirty` 属性表示是否需要计算，如果为 `true`，不走缓存，则执行 `wathcer` 里的 `evaluate` 函数。
 3. `evaluate` 函数的作用是执行 `get` 函数，赋值给 `watcher.value`，并将 `dirty` 设置为 `false`。
 4. 如果 `dirty` 为 `false`，则代表已经计算过，下次访问时直接返回 `watcher.value`。
-5. 这就是 `computed` 缓存的原理。
+5. 当依赖项发生变化时，会执行依赖项 `dep` 里的 `notify`，通知当前计算 `watcher` 执行 `update`，此时将 `dirty` 设置为 `true`，所以下次访问当前计算属性时候，会重新执行 `evaluate` 计算。
+6. 这就是 `computed` 缓存的原理。
 
 ```js
 // 创建 computed 的 getter 函数
@@ -117,10 +121,21 @@ function createComputedGetter (key) {
 }
 
 // -------
-// watcher 里的 evaluate
+// watcher.js 里的 evaluate
 evaluate () {
   this.value = this.get()
   this.dirty = false
+}
+// watcher.js 里的 update
+update () {
+  /* istanbul ignore else */
+  if (this.lazy) {
+    this.dirty = true
+  } else if (this.sync) {
+    this.run()
+  } else {
+    queueWatcher(this)
+  }
 }
 // -------
 ```

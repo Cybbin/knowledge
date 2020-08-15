@@ -90,7 +90,10 @@ module.exports = {
         {
           title: "开始",
           collapsable: true,
-          children: ["start/instructor", "start/mvvm"],
+          children: [
+            "start/instructor",
+            "start/mvvm"
+          ],
         },
         {
           title: "响应式",
@@ -100,6 +103,7 @@ module.exports = {
             "reactive/observerArray",
             "reactive/async-render",
             "reactive/getters",
+            "reactive/watch",
             "reactive/computed"
           ],
         },
@@ -124,6 +128,17 @@ module.exports = {
           children: ["extend/v-model", "extend/nextTick"],
         },
         {
+          title: "全局API",
+          collapsable: true,
+          children: [
+            "global-api/use",
+            "global-api/mixin",
+            "global-api/extend",
+            "global-api/component",
+            "global-api/set"
+          ],
+        },
+        {
           title: "Vue 3.0",
           collapsable: true,
           children: ["version3/instructor"],
@@ -138,6 +153,13 @@ module.exports = {
             "vuex/installModule",
             "vuex/mutations",
             "vuex/plugins",
+          ]
+        },
+        {
+          title: "FAQ",
+          collapsable: true,
+          children: [
+            "faq/message"
           ]
         }
       ],
