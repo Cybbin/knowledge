@@ -141,7 +141,10 @@ module.exports = {
         {
           title: "Vue 3.0",
           collapsable: true,
-          children: ["version3/instructor"],
+          children: [
+            "version3/instructor",
+            "version3/proxy"
+          ],
         },
         {
           title: "Vuex",
