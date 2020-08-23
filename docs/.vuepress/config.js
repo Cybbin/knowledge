@@ -185,6 +185,17 @@ module.exports = {
           children: ["koa/onion", "koa/middleware"],
         },
       ],
+      "/webpack": [
+        {
+          title: "Webpack",
+          collapsable: true,
+          children: [
+            "webpack/entry",
+            "webpack/load-sync",
+            "webpack/harmony",
+          ],
+        },
+      ]
     },
   },
 };
